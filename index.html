@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>家电故障查询</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <h1 id="page-title">家电故障查询</h1>
+    </div>
+
+    <!-- 首页 -->
+    <div class="page active" id="page-home">
+        <!-- 查询表单 -->
+        <div class="query-form">
+            <div class="form-group">
+                <label>选择电器大类</label>
+                <select id="category">
+                    <option value="">请选择电器大类</option>
+                    <option value="空调">空调</option>
+                    <option value="洗衣机">洗衣机</option>
+                    <option value="热水器">热水器</option>
+                    <option value="冰箱">冰箱</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>选择电器小类</label>
+                <select id="subCategory" disabled>
+                    <option value="">请先选择电器大类</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>选择品牌</label>
+                <select id="brand">
+                    <option value="">请选择品牌</option>
+                    <option value="格力">格力</option>
+                    <option value="美的">美的</option>
+                    <option value="奥克斯">奥克斯</option>
+                    <option value="海尔">海尔</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>输入故障代码</label>
+                <input type="text" id="faultCode" placeholder="如 E6、F0、E1" autocomplete="off">
+            </div>
+            <button class="query-btn" id="queryBtn" onclick="handleQuery()">立即查询</button>
+        </div>
+
+        <!-- 热门故障 -->
+        <div class="section-title">热门故障</div>
+        <div class="hot-faults" id="hotFaults"></div>
+
+        <!-- 轮播图 -->
+        <div class="carousel" id="carousel">
+            <div class="carousel-inner" id="carouselInner">
+                <div class="carousel-slide">专业家电故障诊断<br>快速定位问题</div>
+                <div class="carousel-slide">涵盖主流品牌<br>格力·美的·海尔·奥克斯</div>
+                <div class="carousel-slide">维修建议一键获取<br>安全提示保驾护航</div>
+            </div>
+            <div class="carousel-dots">
+                <div class="carousel-dot active"></div>
+                <div class="carousel-dot"></div>
+                <div class="carousel-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 查询结果页 -->
+    <div class="page" id="page-result">
+        <div class="result-header">
+            <button class="back-btn" onclick="goBack()">← 返回</button>
+            <span class="result-title" id="resultTitle">查询结果</span>
+        </div>
+        <div id="resultContent"></div>
+    </div>
+
+    <!-- 我的页面 -->
+    <div class="page" id="page-mine">
+        <div class="my-page-card">
+            <h3>联系客服</h3>
+            <div class="my-page-item" onclick="copyText('a13878048692')">
+                <div class="item-icon" style="background:#e6f7ff;">💬</div>
+                <div class="item-text">客服微信: a13878048692</div>
+                <div class="item-arrow">复制</div>
+            </div>
+        </div>
+        <div class="my-page-card">
+            <h3>功能反馈</h3>
+            <div class="my-page-item" onclick="copyText('a13878048692')">
+                <div class="item-icon" style="background:#fff7e6;">📝</div>
+                <div class="item-text">如有功能建议或问题，欢迎添加客服微信反馈</div>
+                <div class="item-arrow">›</div>
+            </div>
+        </div>
+        <div class="my-page-card">
+            <h3>关于</h3>
+            <div class="my-page-item">
+                <div class="item-icon" style="background:#f6ffed;">ℹ️</div>
+                <div class="item-text">家电故障查询 v1.0</div>
+                <div class="item-arrow"></div>
+            </div>
+            <div class="my-page-item">
+                <div class="item-icon" style="background:#f9f0ff;">📊</div>
+                <div class="item-text">已收录 202 条故障记录</div>
+                <div class="item-arrow"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <div class="tab-bar">
+        <div class="tab-item active" onclick="switchTab('home')">
+            <span class="tab-icon">🔧</span>
+            <span class="tab-text">电器故障查询</span>
+        </div>
+        <div class="tab-item" onclick="switchTab('mine')">
+            <span class="tab-icon">👤</span>
+            <span class="tab-text">我的</span>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+    <a href="https://hits.sh/zd1980.github.io/" style="position:fixed;bottom:60px;right:8px;opacity:0.3;z-index:1;"><img alt="Hits" src="https://hits.sh/zd1980.github.io.svg"/></a>
+</body>
+</html>
